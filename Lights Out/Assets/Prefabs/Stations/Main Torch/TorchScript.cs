@@ -20,7 +20,7 @@ public class TorchScript : MonoBehaviour
 
     private TextMeshProUGUI text;
 
-    private void Start()
+    private void Awake()
     {
         text = GameObject.Find("CrystalCounter").GetComponent<TextMeshProUGUI>();
         light = gameObject.GetComponentInChildren<Light2D>();
