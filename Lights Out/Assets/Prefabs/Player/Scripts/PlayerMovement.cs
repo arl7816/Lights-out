@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(Dash());
         }
 
-        if (Input.GetKey("s")) {
+        if (Input.GetKey("s") || Input.GetKey("down")) {
             rb.gravityScale = 5;
         }else
         {

@@ -1,4 +1,0 @@
-repository "Lights Out@Intense_Cup_Games@cloud"
-  path "/"
-    br "/main"
-    co "/main"
