@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
+public class frameRateCounter : MonoBehaviour
+{
+    private int lastFrameIndex;
+    private float[] frameDeltaTimeArray;
+
+    private TextMeshProUGUI frameCount;
+
+    private void Awake()
+    {
+        frameCount = gameObject.GetComponent<TextMeshProUGUI>();
+        frameDeltaTimeArray = new float[50];
+    }
+
+    private void Update()
+    {
+        frameDeltaTimeArray[lastFrameIndex] = Time.unscaledDeltaTime;
+        lastFrameIndex = (lastFrameIndex + 1) % frameDeltaTimeArray.Length;
+
+        frameCount.text = "FPS: " + Mathf.RoundToInt(calculateFPS()).ToString();
+    }
+
+    private float calculateFPS()
+    {
+        float total = 0f;
+        foreach (float deltaTime in frameDeltaTimeArray)
+        {
+            total += deltaTime;
+        }
+        return frameDeltaTimeArray.Length / total;
+    }
+}
