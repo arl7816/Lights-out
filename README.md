@@ -6,5 +6,6 @@
  - Movement
    -  A: Left
    -  D: Right
+   -  S: Down
    -  Shift: Dash
    -  Z: Zoom Out
