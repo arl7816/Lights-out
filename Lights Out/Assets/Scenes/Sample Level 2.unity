@@ -6207,6 +6207,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1593793552, guid: d49e40e0e6c0268499dc1709a772e062, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.64
+      objectReference: {fileID: 0}
     - target: {fileID: 5909455799420463971, guid: d49e40e0e6c0268499dc1709a772e062, type: 3}
       propertyPath: m_Name
       value: Normal Fire
