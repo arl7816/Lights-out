@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// @author Dominic --DON'T TOUCH UNLESS **SPECIFIC** INSTRUCTIONS TO--
+
 public class MainMenu : MonoBehaviour
 {
     // Start is called before the first frame update
