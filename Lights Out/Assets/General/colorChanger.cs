@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+/// <summary>
+/// @author Alex
+/// </summary>
 public class colorChanger : MonoBehaviour
 {
 

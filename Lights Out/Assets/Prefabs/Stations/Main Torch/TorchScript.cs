@@ -9,6 +9,9 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// @author Alex
+/// </summary>
 public class TorchScript : MonoBehaviour
 {
     private int torchAmount = 0;

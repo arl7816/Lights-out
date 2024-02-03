@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// @author Alex Lee
+/// </summary>
 public class healStation : MonoBehaviour
 {
     GameObject player;

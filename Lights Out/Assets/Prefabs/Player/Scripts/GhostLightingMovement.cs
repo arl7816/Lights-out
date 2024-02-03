@@ -5,6 +5,9 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// @author Alex
+/// </summary>
 public class GhostLightingMovement : MonoBehaviour
 {
 

@@ -4,6 +4,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
+/// <summary>
+/// @author Alex
+/// </summary>
 public class frameRateCounter : MonoBehaviour
 {
     private int lastFrameIndex;

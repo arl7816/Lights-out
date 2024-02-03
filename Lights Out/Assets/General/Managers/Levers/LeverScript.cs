@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// @author Alex
+
 public class LeverScript : MonoBehaviour
 {
 

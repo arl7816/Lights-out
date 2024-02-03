@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// @author Alex
+/// </summary>
 public class DebugController: MonoBehaviour
 {
     private bool showConsole = false;

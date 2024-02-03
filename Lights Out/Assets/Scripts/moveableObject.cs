@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// @author Alex
+/// </summary>
 public class moveableObject : MonoBehaviour
 {
 

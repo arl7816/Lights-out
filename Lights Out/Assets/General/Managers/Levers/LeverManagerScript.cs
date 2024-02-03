@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class EventTrigger : UnityEvent { }
 
-
+// @author Alex
 public class LeverManagerScript : MonoBehaviour
 {
     [SerializeField]
