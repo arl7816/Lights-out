@@ -37,6 +37,9 @@ public class GhostInteract : MonoBehaviour
         desiredCamSize = camStartSize;
     }
 
+    /// <summary>
+    /// checks if the player if the player is near a type of object when they attempt to interact with it
+    /// </summary>
     private void checkInteract()
     {
         LayerMask mask = 6;
@@ -51,6 +54,8 @@ public class GhostInteract : MonoBehaviour
         }
     }
 
+
+    // this needs to be generalized before release
     private void Update()
     {
         if (Input.GetKey("r"))

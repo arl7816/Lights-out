@@ -13,7 +13,7 @@ public class LeverManagerScript : MonoBehaviour
     private string managerName = "Default Name";
 
     /// <summary>
-    /// 
+    /// A Lever can either be up or down
     /// </summary>
     [System.Serializable]
     public class Lever
@@ -27,6 +27,11 @@ public class LeverManagerScript : MonoBehaviour
     public EventTrigger activate;
     public EventTrigger deactivate;
 
+    /// <summary>
+    /// Flips a lever, in the event all levers are flipped, an event is activated, otherwise
+    /// deactivated
+    /// </summary>
+    /// <param name="lever">The lever being flipped</param>
     public void leverFlip(GameObject lever)
     {
         bool allTrue = true;
