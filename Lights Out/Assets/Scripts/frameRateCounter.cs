@@ -28,6 +28,10 @@ public class frameRateCounter : MonoBehaviour
         frameCount.text = "FPS: " + Mathf.RoundToInt(calculateFPS()).ToString();
     }
 
+    /// <summary>
+    /// calculates the given FPS at a particular point
+    /// </summary>
+    /// <returns></returns>
     private float calculateFPS()
     {
         float total = 0f;

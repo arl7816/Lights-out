@@ -22,6 +22,9 @@ public class LeverScript : MonoBehaviour
         leverManager = GameObject.Find("GameManager").GetComponentsInChildren<LeverManagerScript>();
     }
 
+    /// <summary>
+    /// Flips a lever and lets the lever manager aware of the flip
+    /// </summary>
     public void flip()
     {
         state = !state;
@@ -33,7 +36,10 @@ public class LeverScript : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Changes the appearnce of the lever depending on the direction of 
+    /// a flip
+    /// </summary>
     private void switchDir()
     {
         if (state)
