@@ -734,7 +734,7 @@ If developers must "remember" something, create a contract.
 ---
 
 #### Another example
-If you are looking for another example of this contract methodology, view this external Issue request I made for a separate project here [insert here]
+If you are looking for another example of this contract methodology, view this external Issue request I made for a separate project here [Filter Example](FilterExample.markdown)
 
 ---
 
