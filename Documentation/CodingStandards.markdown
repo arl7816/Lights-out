@@ -98,8 +98,7 @@ Documentation should scale with complexity.
 | Change Size | Documentation               |
 | ----------- | --------------------------- |
 | Tiny        | None                        |
-| Small       | PR Description              |
-| Medium      | PR Description + Notes      |
+| Small-Medium| PR Description              |
 | Large       | Dedicated Markdown Document |
 
 Examples:
@@ -190,6 +189,12 @@ A PR should include:
 * Dev tests
 * Screenshots (if applicable)
 
+> [!NOTE]
+> Commits should be small and well documented. PRs when able, should also be reasonably small. 
+
+> [!WARNING]
+> Never commit on main, always create a new branch and merge into main via a PR
+
 ---
 
 # Core Design Principles
@@ -235,8 +240,7 @@ A reader should understand what happens before understanding how it happens.
 ### Good
 
 ```csharp
-public void startLevel()
-{
+public void startLevel(){
     _validateLevel();
 
     _loadLevelData();
@@ -254,8 +258,7 @@ Helper methods describe intent.
 ### Bad
 
 ```csharp
-public void startLevel()
-{
+public void startLevel(){
     // 200 lines of implementation
 }
 ```
@@ -289,23 +292,19 @@ Helper methods should begin with `_`.
 Example:
 
 ```csharp
-public void saveGame()
-{
+public void saveGame(){
     _validateSaveData();
     _serializeData();
     _writeFile();
 }
 
-private void _validateSaveData()
-{
+private void _validateSaveData(){
 }
 
-private void _serializeData()
-{
+private void _serializeData(){
 }
 
-private void _writeFile()
-{
+private void _writeFile(){
 }
 ```
 
@@ -430,8 +429,7 @@ public class PlayerData{
 ### Better (C#)
 
 ```csharp
-public class PlayerData
-{
+public class PlayerData{
     public int health { get; private set; }
 
     public int score { get; private set; }
@@ -459,37 +457,38 @@ We intentionally deviate from standard C# convention. Call me Java pilled but me
 ### Classes
 
 ```csharp
-public class PlayerController
-{
+public class PlayerController{
+    // starts with capital and uses capital to separate
+    // note that abstract classes are the same way
 }
 ```
 
 ### Interfaces
 
 ```csharp
-public interface IDamageable
-{
+public interface IDamageable{
+    // same as classes
 }
 ```
 
 ### Enums
 
 ```csharp
-public enum PuzzleState
-{
+public enum PuzzleState{
+    // same as classes
 }
 ```
 
 ### Methods
 
 ```csharp
-calculateScore()
+calculateScore() // start with lowercase
 ```
 
 ### Variables
 
 ```csharp
-playerHealth
+playerHealth // start with lowercase
 ```
 
 ### Constants
@@ -497,7 +496,7 @@ playerHealth
 ```csharp
 MAX_HEALTH
 
-DEFAULT_RESPAWN_TIME
+DEFAULT_RESPAWN_TIME // all upper and separated with _
 ```
 
 ---
@@ -525,6 +524,23 @@ spawnEnemy(
 ```
 
 The call site becomes self-documenting.
+
+## 11. Always Use Named Parameters
+
+This is a personal thing, and honest to god, you can do either for this one, by I hate the way C# does curly braces {}
+
+```csharp
+// instead of this
+int someMethod()
+{
+    // code here    
+}
+
+// I personally do this (call me java pilled)
+int someMethod2(){
+
+}
+```
 
 ---
 
@@ -566,8 +582,7 @@ These promises are fragile.
 ## Contract Example
 
 ```csharp
-public class SaveData
-{
+public class SaveData{
     public string playerName;
 
     public int level;
@@ -588,19 +603,17 @@ The promise became a contract.
 os.getenv("API_KEY")
 ```
 
-Every file may interpret defaults differently.
+Every file may interpret defaults differently, forget these exists, and unless documentation is updated and read regularly the developer does not know this api key is needed. 
 
 ---
 
 ### Better
 
 ```csharp
-public static class EnvironmentConfig
-{
+public static class EnvironmentConfig{
     public static readonly string apiKey;
 
-    static EnvironmentConfig()
-    {
+    static EnvironmentConfig(){
         apiKey = loadRequired("API_KEY");
     }
 }
@@ -653,8 +666,7 @@ throw new Exception();
 Good:
 
 ```csharp
-if (saveData == null)
-{
+if (saveData == null){
     Debug.LogError(
         "Save data was null."
     );
@@ -693,8 +705,8 @@ What happens if this assumption is wrong? Is this a reasonable assumption?
 Imagine future requirements:
 
 ```text
-Add multiplayer.
-Add cloud saves.
+Add a dash mechanic to the movement.
+Tweak their health.
 Add custom puzzle modes.
 ```
 
@@ -718,6 +730,11 @@ Look for:
 * Network payloads
 
 If developers must "remember" something, create a contract.
+
+---
+
+#### Another example
+If you are looking for another example of this contract methodology, view this external Issue request I made for a separate project here [insert here]
 
 ---
 
@@ -812,27 +829,25 @@ Use it intelligently.
 
 ## Common AI Failure Modes
 
-### 1. Rewriting Existing Code
+1. Rewriting Existing Code
 
-AI frequently replaces working code unnecessarily.
+AI frequently replaces working code unnecessarily or adds a method that already exists in the codebase. 
 
----
-
-### 2. Removing Edge Cases
+2. Removing Edge Cases
 
 AI often "fixes" bugs by removing complexity rather than understanding it.
 
----
+3. Confusing code
 
-### 3. Regex Abuse
-
-AI loves solving everything with:
+AI loves solving everything with regex such as:
 
 ```regex
 .*(.+)?[\w]
 ```
 
-If you cannot explain the regex, do not ship it.
+Or likewise, vectorizes a simple array, masking instead of looping. AI writes long boilerplate code that looks like a senior dev to confuse you. If you're not careful, you won't understand the code in due time. 
+
+If you cannot explain the code, do not ship it.
 
 ---
 
@@ -857,21 +872,11 @@ Readable code wins.
 
 # Recommended AI Workflow
 
-### Step 1
+1. Describe the problem. For larger issues, it's sometimes best to hand the initial prompt over to chatgpt and ask it to optimize your prompt (make sure to proof read and edit however)
 
-Describe the problem.
+2. Ask AI for potential approaches.
 
----
-
-### Step 2
-
-Ask AI for potential approaches.
-
----
-
-### Step 3
-
-Challenge every assumption.
+3. Challenge every assumption.
 
 Example:
 
@@ -885,17 +890,9 @@ What are the risks?
 What would break this solution?
 ```
 
----
+4. Implement the solution yourself.
 
-### Step 4
-
-Implement the solution yourself.
-
----
-
-### Step 5
-
-Use AI as a reviewer.
+5. Use AI as a reviewer.
 
 ---
 
@@ -931,7 +928,7 @@ Best for:
 
 ---
 
-### Claude
+### Claude (if able)
 
 Best for:
 
@@ -952,7 +949,7 @@ Best for:
 
 # Final Checklist
 
-Before opening a PR:
+Before opening a PR for review:
 
 * [ ] Requirements documented
 * [ ] High-level design created
@@ -966,11 +963,4 @@ Before opening a PR:
 * [ ] File has a single responsibility
 * [ ] Assumptions identified
 * [ ] Future modifications considered
-* [ ] PR created
-* [ ] Code reviewed
 
----
-
-> Good code is not code that works.
->
-> Good code is code that continues to work after requirements change.
