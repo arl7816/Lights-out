@@ -161,8 +161,7 @@ Example:
 
 ```csharp
 [Test]
-public void restartLevel_resetsPuzzleState()
-{
+public void restartLevel_resetsPuzzleState(){
     puzzleState.completePuzzle();
 
     gameManager.restartLevel();
