@@ -5,7 +5,7 @@
 **Project:** Lights Out
 **Company:** Intense Cup Studios
 **Language:** C# (Unity)
-**Last Updated:** June 2026
+**Last Updated:** July 2026
 
 ---
 
