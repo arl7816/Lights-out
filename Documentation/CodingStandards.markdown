@@ -525,7 +525,7 @@ spawnEnemy(
 
 The call site becomes self-documenting.
 
-## 11. Always Use Named Parameters
+## 11. Brackets should be K&R style
 
 This is a personal thing, and honest to god, you can do either for this one, by I hate the way C# does curly braces {}
 
