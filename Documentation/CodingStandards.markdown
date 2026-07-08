@@ -863,22 +863,3 @@ Best for:
 * Small to medium coding tasks
 * Quick experimentation
 
----
-
-# Final Checklist
-
-Before opening a PR for review:
-
-* [ ] Requirements documented
-* [ ] High-level design created
-* [ ] Solution documented
-* [ ] Dev tests written
-* [ ] Automated tests added (if possible)
-* [ ] No magic numbers
-* [ ] Uses contracts where appropriate
-* [ ] Handles failures gracefully
-* [ ] Methods remain focused
-* [ ] File has a single responsibility
-* [ ] Assumptions identified
-* [ ] Future modifications considered
-
