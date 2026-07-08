@@ -20,7 +20,7 @@ public bool birdIsAlive = true;
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) == true && birdIsAlive == true)
+        if(Input.GetKeyDown(KeyCode.Space) == true || Input.GetMouseButtonDown(0) == true && birdIsAlive == true)
         {
             myRigidbody.velocity = Vector2.up * flapStrength;
         }
