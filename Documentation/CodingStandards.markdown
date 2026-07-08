@@ -26,6 +26,40 @@ When in doubt, favor:
 
 > Clarity over cleverness.
 
+## TLDR
+
+### Coding Guidelines
+
+* Each file should have one responsibility
+* No magic numbers (should always be a constant, enum + dict, or a static constant class)
+* Names should always be descriptive
+* Always specify parameter names when passing in arguments
+* Always specify type (return, variable, etc...).
+* Methods should be no more then 50 lines
+* When methods become too long, break them down into helper methods using top down design
+    * methods should read easy
+    * From a math perspective, this is like breaking a function down into a composition of functions
+    * From a software perspective, this is like decomposing a method into it's modular components and putting them back together
+* Helper methods should either be private or start with an '_' depending on the language
+* Ensure all promises are turned into contracts using enforcers.
+* Never use schemeless objects such as maps or json objects. When able, prefer classes, dataclasses, or schema enforcing objects.
+* Code should be dynamically documented. Self documenting code, one line, full doc-string, markdown file. 
+* A function/method should aim for only one return statement
+* Aim for zero nesting but if needed, no more then 2 (if, switch, looping, etc...)
+* If a function/method returns multiple elements, it should return a dataclass. No tuples, lists, maps/dicts, etc...
+
+### Design Pattern choices
+
+When deciding on design patterns, ask the following questions:
+
+1. Is the design self-documenting and easy to understand?
+
+2. How easily does this scale in terms of features and merge conflicts?
+
+3. Does this reduce the mental model of developer (when code is changed, how many things does the developer need to remember)
+
+4. Are all promises turned into contracts?
+
 ---
 
 # Development Workflow
@@ -42,19 +76,6 @@ Every task should begin by answering:
 * What behavior should change?
 * What behavior should remain unchanged?
 * How will I know when I am done?
-
-Example:
-
-```text
-Feature:
-Player can restart the current level.
-
-Requirements:
-- Restart button appears on pause menu.
-- Restart resets puzzle state.
-- Restart does not reset player settings.
-- Restart loads in under 1 second.
-```
 
 ---
 
@@ -87,11 +108,17 @@ The goal is to identify:
 
 before code exists.
 
+### 3. Branch It
+
+Make sure to create a seperate branch in which you can implement your solution. I.e **never code on main out right**.
+
+
+
 ---
 
 ## After Implementation
 
-### 3. Document the Solution
+### 4. Document the Solution
 
 Documentation should scale with complexity.
 
@@ -121,7 +148,7 @@ Created AI behavior framework.
 
 ---
 
-### 4. Create Dev Tests
+### 5. Create Dev Tests
 
 Dev tests are manual tests performed by developers.
 
@@ -146,7 +173,7 @@ Every feature should have a clear way to manually verify success.
 
 ---
 
-### 5. Create Automated Tests (When Possible)
+### 6. Create Automated Tests (When Possible)
 
 If a system can be tested automatically, it should be.
 
@@ -175,7 +202,7 @@ public void restartLevel_resetsPuzzleState(){
 
 ---
 
-### 6. Open a Pull Request
+### 7. Open a Pull Request
 
 **Every change should receive review.**
 
@@ -194,13 +221,12 @@ A PR should include:
 > [!WARNING]
 > Never commit on main, always create a new branch and merge into main via a PR
 
----
 
 # Core Design Principles
 
 ---
 
-## 1. One Responsibility Per File
+## One Responsibility Per File
 
 Each file should have a single purpose.
 
@@ -232,7 +258,7 @@ then it is actually six systems hiding inside one file.
 
 ---
 
-## 2. Prefer Top-Down Design
+## Prefer Top-Down Design
 
 A reader should understand what happens before understanding how it happens.
 
@@ -266,27 +292,9 @@ The reader must understand every line before understanding the goal.
 
 ---
 
-## 3. Every File Has Entry Points
+## Internal Logic Uses Helper Methods
 
-Entry points are methods intended to be called externally or serve the main focus of the present file. Think `SaveGame`, `Update` or `OnInput`. 
-
-Example:
-
-```csharp
-public class SaveSystem{
-    public void saveGame(){
-        _validateSaveData();
-        _serializeData();
-        _writeFile();
-    }
-}
-```
-
----
-
-## 4. Internal Logic Uses Helper Methods
-
-Helper methods should begin with `_`.
+Helper methods should begin with `_` and or be private methods.
 
 Example:
 
@@ -309,7 +317,7 @@ private void _writeFile(){
 
 ---
 
-## 5. Keep Methods Small
+## Keep Methods Small
 
 As a general rule:
 
@@ -325,7 +333,7 @@ Because large methods usually indicate:
 
 ---
 
-## 6. Self-Documenting Code
+## Self-Documenting Code
 
 Good names eliminate comments.
 
@@ -351,7 +359,7 @@ doThing();
 
 ---
 
-## 7. No Magic Numbers
+## No Magic Numbers
 
 Avoid unexplained values.
 
@@ -389,7 +397,7 @@ public enum Difficulty{
 
 ---
 
-## 8. Use Data Structures Instead of Dictionaries
+## Use Data Structures Instead of Dictionaries
 
 Avoid anonymous data whenever structure is known.
 
@@ -449,9 +457,9 @@ Benefits:
 
 ---
 
-## 9. Naming Conventions
+## Naming Conventions
 
-We intentionally deviate from standard C# convention. Call me Java pilled but me think its ugly. 
+We intentionally deviate from standard C# convention. Call me Java pilled but me thinks standard C# ugly. 
 
 ### Classes
 
@@ -498,9 +506,8 @@ MAX_HEALTH
 DEFAULT_RESPAWN_TIME // all upper and separated with _
 ```
 
----
 
-## 10. Always Use Named Parameters
+## Always Use Named Parameters
 
 ### Bad
 
@@ -524,7 +531,7 @@ spawnEnemy(
 
 The call site becomes self-documenting.
 
-## 11. Brackets should be K&R style
+## Brackets should be K&R style
 
 This is a personal thing, and honest to god, you can do either for this one, by I hate the way C# does curly braces {}
 
@@ -604,7 +611,6 @@ os.getenv("API_KEY")
 
 Every file may interpret defaults differently, forget these exists, and unless documentation is updated and read regularly the developer does not know this api key is needed. 
 
----
 
 ### Better
 
@@ -624,6 +630,9 @@ Benefits:
 * Validation occurs once
 * Self-documenting
 * Consistent defaults
+
+#### Another example
+If you are looking for another example of this contract methodology, view this external Issue request I made for a separate project here [Filter Example](FilterExample.markdown)
 
 ---
 
@@ -648,95 +657,6 @@ D --> G[Business Logic]
 E --> H[Storage]
 ```
 
----
-
-# Failure Handling
-
-Before submitting code, ask:
-
-## 1. Does My Code Fail Gracefully?
-
-Bad:
-
-```csharp
-throw new Exception();
-```
-
-Good:
-
-```csharp
-if (saveData == null){
-    Debug.LogError(
-        "Save data was null."
-    );
-
-    return;
-}
-```
-
-Players should never experience crashes because of predictable failures.
-
----
-
-## 2. What Assumptions Am I Making?
-
-Every system makes assumptions.
-
-Examples:
-
-```text
-A save file exists.
-A scene is loaded.
-A prefab is assigned.
-A network connection exists.
-```
-
-Ask:
-
-```text
-What happens if this assumption is wrong? Is this a reasonable assumption? 
-```
-
----
-
-## 3. How Easy Is This To Modify?
-
-Imagine future requirements:
-
-```text
-Add a dash mechanic to the movement.
-Tweak their health.
-Add custom puzzle modes.
-```
-
-Would your design survive?
-
-Or would it require a rewrite?
-
-Favor extension over replacement.
-
----
-
-## 4. Have I Turned Promises Into Contracts?
-
-Look for:
-
-* JSON
-* Dictionaries
-* Environment variables
-* Config files
-* Save files
-* Network payloads
-
-If developers must "remember" something, create a contract.
-
----
-
-#### Another example
-If you are looking for another example of this contract methodology, view this external Issue request I made for a separate project here [Filter Example](FilterExample.markdown)
-
----
-
 # Unity-Specific Guidelines
 
 ---
@@ -749,7 +669,6 @@ If you are looking for another example of this contract methodology, view this e
 GameObject.Find("Player");
 ```
 
----
 
 ### Better
 
