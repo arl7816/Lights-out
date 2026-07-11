@@ -5,9 +5,10 @@ using UnityEngine;
 /// <summary>
 /// Handles core left - right movement for player
 /// </summary>
+
+[RequireComponent(typeof(Rigidbody2D))]
 public class MovementController : MonoBehaviour
 {
-    // The following are assumed to be attached to the player
     private Rigidbody2D rb;
 
     /// <summary>
@@ -21,6 +22,10 @@ public class MovementController : MonoBehaviour
 
     private bool facingRight = true;
 
+    public void Start()
+    {
+        fetchComponents();
+    }
 
     private void Update()
     {
@@ -31,6 +36,11 @@ public class MovementController : MonoBehaviour
     {
         handleFacingDirection();
         applyMovement();
+    }
+
+    private void fetchComponents()
+    {
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void readInput()
