@@ -6,7 +6,9 @@ using UnityEngine;
 /// Handles core left - right movement for player
 /// </summary>
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D)),
+    RequireComponent(typeof(PlayerController)),
+    RequireComponent(typeof(PlayerState))]
 public class MovementController : MonoBehaviour
 {
     private Rigidbody2D rb;
@@ -16,11 +18,8 @@ public class MovementController : MonoBehaviour
     /// </summary>
     private float movementInput;
 
-    // THIS NEEDS TO BE MOVED TO THE PLAYERCONTROLLER LATER
-    [SerializeField]
-    private float movementSpeed;
-
-    private bool facingRight = true;
+    PlayerController playerController;
+    PlayerState playerState;
 
     public void Start()
     {
@@ -41,6 +40,8 @@ public class MovementController : MonoBehaviour
     private void fetchComponents()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerController = GetComponent<PlayerController>();
+        playerState = GetComponent<PlayerState>();
     }
 
     private void readInput()
@@ -50,10 +51,10 @@ public class MovementController : MonoBehaviour
 
     private void handleFacingDirection()
     {
-        if (!facingRight && movementInput > 0){
+        if (!playerState.facingRight && movementInput > 0){
             // the player is facing left and the input is going right => flip
             flip();
-        } else if (facingRight && movementInput < 0){
+        } else if (playerState.facingRight && movementInput < 0){
             // the player is facing right and the input is going left => flip
             flip();
         }
@@ -61,14 +62,14 @@ public class MovementController : MonoBehaviour
 
     private void flip()
     {
-        facingRight = !facingRight;
+        playerState.facingRight = !playerState.facingRight;
         transform.Rotate(0f, 180f, 0f);
     }
 
     private void applyMovement()
     {
         rb.velocity = new Vector2(
-            movementInput * movementSpeed,
+            movementInput * playerController.getMovementSpeed(),
             rb.velocity.y);
     }
 }

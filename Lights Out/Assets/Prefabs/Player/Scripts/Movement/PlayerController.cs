@@ -11,5 +11,8 @@ This also holds the internal state machine for the player movement.
 
 public class PlayerController : MonoBehaviour
 {
-    
+    [SerializeField]
+    private float movementSpeed = 10f;
+
+    public float getMovementSpeed() => movementSpeed; 
 }
