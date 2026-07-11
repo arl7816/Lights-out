@@ -9487,6 +9487,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6075603793026438326, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
+      propertyPath: showRays
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075603793026438326, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075603793026438326, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
+      propertyPath: rayDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6075603793026438327, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
       propertyPath: cam
       value: 
