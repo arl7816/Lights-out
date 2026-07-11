@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // figures out if the player is on a wall or not
+        /*
         BoxRaycasting rays = GetComponent<BoxRaycasting>();
         if (rays.collisionRight == true && rays.collisionDown == false || rays.collisionLeft == true && rays.collisionDown == false)
         {
@@ -89,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         {
             onwall = false;
         }
+        */ 
 
         // jumps if you have more than -1 jumps remaining
         if (!floatMode)
@@ -156,12 +158,14 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // checks to see if the player should get there jumps back (anything other than ceiling)
+        /*
         BoxRaycasting rays = GetComponent<BoxRaycasting>();
         if (rays.collisionLeft || rays.collisionRight || rays.collisionDown)
         {
             extra_jumps = jumps;
             canDash = true;
         }
+        */
     }
 
     private IEnumerator Dash()
