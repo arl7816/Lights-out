@@ -14,5 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float movementSpeed = 10f;
 
-    public float getMovementSpeed() => movementSpeed; 
+    [SerializeField]
+    private float jumpForce = 100f;
+
+    public float getMovementSpeed() => movementSpeed;
+    public float getJumpForce() => jumpForce; 
 }

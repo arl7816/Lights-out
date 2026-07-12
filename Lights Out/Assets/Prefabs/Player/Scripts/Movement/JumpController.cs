@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxRaycasting)),
-    RequireComponent(typeof(Rigidbody2D))]
+    RequireComponent(typeof(Rigidbody2D)),
+    RequireComponent(typeof(PlayerController))]
 public class JumpController : MonoBehaviour
 {
+    // required components attached to the game object
     private BoxRaycasting collisionDetector;
     private Rigidbody2D rb;
+    private PlayerController playerController;
 
-    private bool canJump = true;
-    private int totalJumps = 1;
+    // helper variables
     private bool canDoubleJump = true;
     private bool jumpRequested = false;
 
-    [SerializeField]
-    private float jumpForce = 1f;
-
     private void Awake()
     {
-        collisionDetector = GetComponent<BoxRaycasting>();
-        rb = GetComponent<Rigidbody2D>();
+        fetchComponents();
     }
 
     private void Update()
@@ -33,21 +31,22 @@ public class JumpController : MonoBehaviour
         handleJump();
     }
 
+    private void fetchComponents()
+    {
+        collisionDetector = GetComponent<BoxRaycasting>();
+        rb = GetComponent<Rigidbody2D>();
+        playerController = GetComponent<PlayerController>();
+    }
+
     private void readInput()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            Debug.Log("Detected jump button");
-            jumpRequested = true;
-        }
+        if (Input.GetButtonDown("Jump")) jumpRequested = true;
     }
 
     private void handleJump()
     {
         if (!jumpRequested) return;
-
         jumpRequested = false;
-
         tryJump();
     }
 
@@ -56,20 +55,23 @@ public class JumpController : MonoBehaviour
         // check directly to see if the player is grounded. 
         // Don't need any werid event mis-matches happening
         if (collisionDetector.IsGrounded){
-            totalJumps = 1;
+            // when on the ground, the player gets a free jump and can jump again 
+            canDoubleJump = true;
             performJump();
-        }else if (!collisionDetector.IsGrounded && totalJumps != 0){
-            totalJumps = 0;
+        }else if (!collisionDetector.IsGrounded && canDoubleJump){
+            // if in the air and player has a double jump left, they use it up
+            canDoubleJump = false;
             performJump();
         }
     }
 
     private void performJump()
     {
-        canJump = false;
-        // reset vertical velocity
+        // reset vertical velocity back to zero. 
+        // if the player if falling we have a neg y thus the force is reduced
+        // to get the same force impulse, we must reset the y component. 
         rb.velocity = new Vector2(rb.velocity.x, 0f);
-        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.up * playerController.getJumpForce(), ForceMode2D.Impulse);
     }
 
 }
