@@ -5,6 +5,10 @@ using UnityEngine;
 /// Detects collisions around the player using raycasts.
 /// This class is responsible only for detecting contact and notifying
 /// listeners when collision states change.
+/// 
+/// TODO: need to rename function names, likewise colliders should carry some information along with 
+/// them such as the raycast info RaycastHit2D
+/// These also need to avoid hitting triggers
 /// </summary>
 [RequireComponent(typeof(Collider2D))]
 public class BoxRaycasting : MonoBehaviour

@@ -4869,6 +4869,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
+--- !u!114 &947217715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947217692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33b9c2925fed6840a771f7fb6abedf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 100
 --- !u!1 &1003749868
 GameObject:
   m_ObjectHideFlags: 0
@@ -9431,6 +9444,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6075603792198060080, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.34
+      objectReference: {fileID: 0}
     - target: {fileID: 6075603792455952508, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -9453,7 +9470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075603793026438325, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.1
+      value: -8.306
       objectReference: {fileID: 0}
     - target: {fileID: 6075603793026438325, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9497,7 +9514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075603793026438326, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
       propertyPath: rayDistance
-      value: 1
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 6075603793026438327, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
       propertyPath: cam
@@ -9507,9 +9524,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6075603793026438329, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
+      propertyPath: m_Mass
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6075603793026438331, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
       propertyPath: m_Name
       value: ghostGuy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075603793271101195, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.328
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
