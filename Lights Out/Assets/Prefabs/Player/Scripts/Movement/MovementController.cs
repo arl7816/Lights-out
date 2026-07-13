@@ -71,6 +71,10 @@ public class MovementController : MonoBehaviour
 
     private void applyMovement()
     {
+        // if the player is currently in a dashing state,
+        // we don't want to override their x component.
+        if (playerState.isDashing) return;
+
         rb.velocity = new Vector2(
             movementInput * playerController.getMovementSpeed(),
             rb.velocity.y);

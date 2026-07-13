@@ -4844,6 +4844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  jumpForce: 100
 --- !u!114 &947217704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4869,6 +4870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingRight: 1
+  isDashing: 0
 --- !u!114 &947217715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4881,7 +4883,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33b9c2925fed6840a771f7fb6abedf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 100
+--- !u!114 &947217716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947217692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e295ab0e2b26bf41a959c6cdf3f86e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashForce: 10
+  dashingTime: 1
 --- !u!1 &1003749868
 GameObject:
   m_ObjectHideFlags: 0

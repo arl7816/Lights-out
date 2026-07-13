@@ -5,4 +5,5 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     public bool facingRight = true;
+    public bool isDashing = false;
 }
