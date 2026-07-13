@@ -65,6 +65,7 @@ public class MovementController : MonoBehaviour
 
     private void flip()
     {
+        playerState.notifyPlayerFlipped();
         playerState.facingRight = !playerState.facingRight;
         transform.Rotate(0f, 180f, 0f);
     }

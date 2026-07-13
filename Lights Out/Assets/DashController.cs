@@ -35,11 +35,19 @@ public class DashController : MonoBehaviour
     private void OnEnable()
     {
         collisionDetector.GroundEntered += resetCanDash;
+        collisionDetector.RightWallEntered += cancelDash;
+        collisionDetector.LeftWallEntered += cancelDash;
+        playerState.jumpStarted += cancelDash;
+        playerState.playerFlipped += cancelDash;
     }
 
     private void OnDisable()
     {
         collisionDetector.GroundEntered -= resetCanDash;
+        collisionDetector.RightWallEntered += cancelDash;
+        collisionDetector.LeftWallEntered += cancelDash;
+        playerState.jumpStarted -= cancelDash;
+        playerState.playerFlipped -= cancelDash;
     }
 
     private void Update()
@@ -65,7 +73,13 @@ public class DashController : MonoBehaviour
     {
         // if the player has touched the ground, they can dash again
         canDash = true;
-        if (performDashRef != null){
+        cancelDash();
+    }
+
+    private void cancelDash()
+    {
+        if (performDashRef != null)
+        {
             StopCoroutine(performDashRef);
         }
         endDashState();

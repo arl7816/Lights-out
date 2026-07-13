@@ -4,13 +4,15 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxRaycasting)),
     RequireComponent(typeof(Rigidbody2D)),
-    RequireComponent(typeof(PlayerController))]
+    RequireComponent(typeof(PlayerController)),
+    RequireComponent(typeof(PlayerState))]
 public class JumpController : MonoBehaviour
 {
     // required components attached to the game object
     private BoxRaycasting collisionDetector;
     private Rigidbody2D rb;
     private PlayerController playerController;
+    private PlayerState playerState;
 
     // helper variables
     private bool canDoubleJump = true;
@@ -36,6 +38,7 @@ public class JumpController : MonoBehaviour
         collisionDetector = GetComponent<BoxRaycasting>();
         rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
+        playerState = GetComponent<PlayerState>();
     }
 
     private void readInput()
@@ -67,6 +70,9 @@ public class JumpController : MonoBehaviour
 
     private void performJump()
     {
+        // notify listeners that player is jumping
+        playerState.notifyStartJump();
+
         // reset vertical velocity back to zero. 
         // if the player if falling we have a neg y thus the force is reduced
         // to get the same force impulse, we must reset the y component. 
