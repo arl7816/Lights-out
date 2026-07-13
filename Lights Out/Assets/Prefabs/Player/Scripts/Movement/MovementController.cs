@@ -21,6 +21,9 @@ public class MovementController : MonoBehaviour
     PlayerController playerController;
     PlayerState playerState;
 
+    private const string HORIZONTAL_INPUT_BINDING = "Horizontal";
+
+
     public void Start()
     {
         fetchComponents();
@@ -46,7 +49,7 @@ public class MovementController : MonoBehaviour
 
     private void readInput()
     {
-        movementInput = Input.GetAxisRaw("Horizontal");
+        movementInput = Input.GetAxisRaw(HORIZONTAL_INPUT_BINDING);
     }
 
     private void handleFacingDirection()
