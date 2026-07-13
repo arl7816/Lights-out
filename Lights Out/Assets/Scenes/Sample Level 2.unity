@@ -4895,7 +4895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e295ab0e2b26bf41a959c6cdf3f86e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 10
+  dashForce: 120
   dashingTime: 1
 --- !u!1 &1003749868
 GameObject:
