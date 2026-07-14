@@ -7,6 +7,7 @@ public class PlayerState : MonoBehaviour
 {
     public bool facingRight = true;
     public bool isDashing = false;
+    public bool isHeavyFalling = false;
 
     public event Action jumpStarted;
     public void notifyStartJump(){jumpStarted?.Invoke();}

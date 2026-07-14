@@ -4845,6 +4845,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   jumpForce: 100
+  dashForce: 120
+  dashingTime: 1
+  heavyFallGravityScale: 10
 --- !u!114 &947217704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4871,6 +4874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingRight: 1
   isDashing: 0
+  isHeavyFalling: 0
 --- !u!114 &947217715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4895,8 +4899,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e295ab0e2b26bf41a959c6cdf3f86e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashForce: 120
-  dashingTime: 1
+--- !u!114 &947217726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 947217692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99ea4d229c82f745873068a772dd049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1003749868
 GameObject:
   m_ObjectHideFlags: 0
@@ -9542,6 +9556,10 @@ PrefabInstance:
     - target: {fileID: 6075603793026438329, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
       propertyPath: m_Mass
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6075603793026438329, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6075603793026438331, guid: c5d8bf0a2988d134f9fcbc2605c5ff7f, type: 3}
       propertyPath: m_Name

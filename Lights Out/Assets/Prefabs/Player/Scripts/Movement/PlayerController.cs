@@ -27,5 +27,11 @@ public class PlayerController : MonoBehaviour
     private float dashingTime = 1f;
     public float getDashingTime() => dashingTime;
 
-    
+    [SerializeField]
+    private float heavyFallGravityScale = 10f;
+    public float getHeavyFallGravityScale() => heavyFallGravityScale;
+
+    [SerializeField]
+    private float maxFallSpeed = 20f;
+    public float getMaxFallSpeed() => maxFallSpeed; 
 }
