@@ -1,5 +1,12 @@
 using UnityEngine;
 
+// QUESTION: 
+/*
+ * Do we want the fall to be instant or gradual
+ * If gradual, dashing shouldnt be cancelled out
+ * If instant, dash should be cancelled out no? 
+ */
+
 [RequireComponent(typeof(Rigidbody2D)),
  RequireComponent(typeof(PlayerController)),
  RequireComponent(typeof(PlayerState)),
