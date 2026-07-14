@@ -9,12 +9,6 @@ using UnityEngine;
     RequireComponent(typeof(TrailRenderer))]
 public class DashController : MonoBehaviour
 {
-
-    [SerializeField]
-    private float dashForce = 10f;
-    [SerializeField]
-    private float dashingTime = 1f;
-
     private Rigidbody2D rb;
     private BoxRaycasting collisionDetector;
     private PlayerController playerController;
@@ -24,6 +18,7 @@ public class DashController : MonoBehaviour
     private bool canDash = true;
     private bool dashRequested = false;
 
+    // holds a ref to the performDash method to let us cancel it
     private IEnumerator performDashRef;
 
     private void Awake()
@@ -125,8 +120,8 @@ public class DashController : MonoBehaviour
         startDashState();
         
         int dashDirection = playerState.facingRight ? 1: -1;
-        rb.AddForce(Vector2.right * dashForce * dashDirection, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(dashingTime);
+        rb.AddForce(Vector2.right * playerController.getDashForce() * dashDirection, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(playerController.getDashingTime());
         
         endDashState();
     }
