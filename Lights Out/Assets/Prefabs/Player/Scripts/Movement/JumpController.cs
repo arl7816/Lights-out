@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// TODO: would be nice if the allowed number of jumps was adjustable
+// instead of one double jump, we have "airborn jumps". 
+
 [RequireComponent(typeof(BoxRaycasting)),
     RequireComponent(typeof(Rigidbody2D)),
     RequireComponent(typeof(PlayerController)),

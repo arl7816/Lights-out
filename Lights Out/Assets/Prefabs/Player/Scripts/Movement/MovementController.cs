@@ -5,7 +5,6 @@ using UnityEngine;
 /// <summary>
 /// Handles core left - right movement for player
 /// </summary>
-
 [RequireComponent(typeof(Rigidbody2D)),
     RequireComponent(typeof(PlayerController)),
     RequireComponent(typeof(PlayerState))]
