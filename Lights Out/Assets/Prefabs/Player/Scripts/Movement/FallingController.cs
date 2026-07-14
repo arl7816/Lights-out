@@ -75,6 +75,7 @@ public class FallingController : MonoBehaviour
 
     private void startFalling()
     {
+        playerState.notifyPlayerStartedHeavyFall();
         playerState.isHeavyFalling = true;
         rb.gravityScale = playerController.getHeavyFallGravityScale();
     }

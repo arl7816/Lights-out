@@ -14,4 +14,10 @@ public class PlayerState : MonoBehaviour
 
     public event Action playerFlipped;
     public void notifyPlayerFlipped() { playerFlipped?.Invoke(); }
+
+    public event Action playerDashed;
+    public void notifyPlayerDashed() { playerDashed?.Invoke(); }
+
+    public event Action playerStartedHeavyFall;
+    public void notifyPlayerStartedHeavyFall() { playerStartedHeavyFall?.Invoke(); }
 }

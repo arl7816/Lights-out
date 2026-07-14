@@ -128,6 +128,7 @@ public class DashController : MonoBehaviour
 
     private void startDashState()
     {
+        playerState.notifyPlayerDashed();
         playerState.isDashing = true;
         dashTrail.emitting = true;
         canDash = false;
