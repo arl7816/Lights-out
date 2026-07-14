@@ -4844,10 +4844,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
-  jumpForce: 100
+  jumpForce: 150
   dashForce: 120
   dashingTime: 1
-  heavyFallGravityScale: 10
+  heavyFallGravityScale: 5
+  maxFallSpeed: 20
 --- !u!114 &947217704
 MonoBehaviour:
   m_ObjectHideFlags: 0
