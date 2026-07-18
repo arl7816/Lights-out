@@ -11,7 +11,9 @@ public class Jumpscare : MonoBehaviour
 
     void Start()
     {
-        image.enabled = false;
+        // disable in the unity editor
+        // can use this as a way to force the dev to do something
+        //image.enabled = false;
     }
     public void Jumpscared()
     {
