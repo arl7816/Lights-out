@@ -5,10 +5,10 @@ using UnityEngine;
 public class birdscript : MonoBehaviour
 {
 
-public Rigidbody2D myRigidbody;
-public float flapStrength;
-public LogicScript logic;
-public bool birdIsAlive = true;
+    public Rigidbody2D myRigidbody;
+    public float flapStrength;
+    public LogicScript logic;
+    public bool birdIsAlive = true;
 
 
     // Start is called before the first frame update
@@ -20,7 +20,9 @@ public bool birdIsAlive = true;
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) == true || Input.GetMouseButtonDown(0) == true && birdIsAlive == true)
+        bool jumpRequest = Input.GetKeyDown(KeyCode.Space) == true || Input.GetMouseButtonDown(0) == true;
+
+        if (jumpRequest && birdIsAlive == true)
         {
             myRigidbody.velocity = Vector2.up * flapStrength;
         }
