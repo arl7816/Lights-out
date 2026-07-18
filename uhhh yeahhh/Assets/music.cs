@@ -14,13 +14,13 @@ public class music : MonoBehaviour
     // Call this method when the player loses
     void Update()
     {
-      if (!bird.birdIsAlive && !played)
-        {
-            backgroundSource.Stop();
-        gameOverSource.Play();
-        jumpscareSource.Play();
-        played = true;
-        }
+          if (!bird.birdIsAlive && !played)
+          {
+                backgroundSource.Stop();
+                gameOverSource.Play();
+                jumpscareSource.Play();
+                played = true;
+          }
        
     }
 }
