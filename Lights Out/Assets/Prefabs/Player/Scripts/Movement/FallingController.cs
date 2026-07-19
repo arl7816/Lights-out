@@ -93,6 +93,7 @@ public class FallingController : MonoBehaviour
 
         playerState.isHeavyFalling = false;
         rb.gravityScale = defaultGravity;
+        playerState.notifyPlayerStoppedHeavyFall();
     }
 
     private void clampFallSpeed()

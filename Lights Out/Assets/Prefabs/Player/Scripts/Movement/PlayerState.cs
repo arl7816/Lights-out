@@ -20,4 +20,7 @@ public class PlayerState : MonoBehaviour
 
     public event Action playerStartedHeavyFall;
     public void notifyPlayerStartedHeavyFall() { playerStartedHeavyFall?.Invoke(); }
+
+    public event Action playerStoppedHeavyFall;
+    public void notifyPlayerStoppedHeavyFall() { playerStoppedHeavyFall?.Invoke(); }
 }
